@@ -3,12 +3,11 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.model.RacingCars;
+import racingcar.model.RacingCarCollection;
 
-import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarsTest {
+public class RacingCarCollectionTest {
 
     @Nested
     @DisplayName("자동차컬렉션을 생성하는 create메소드는")
@@ -22,12 +21,31 @@ public class RacingCarsTest {
             String carNames = "awfwaf,";
 
             //when,then
-            assertThatThrownBy(() -> RacingCars.createCars(carNames))
+            assertThatThrownBy(() -> RacingCarCollection.create(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다");
         }
 
+
+
     }
+
+
+    @Test
+    @DisplayName("쉼표로 구분된 문자열 개수만큼 자동자객체를 담은 리스트생성")
+    void returns_carlist_when_input_string_separated_by_commas() {
+
+        //given
+        String carNames = "awfwaf,aawfwaf";
+
+        //when
+        RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);
+
+/*
+        List<RacingCar> racingCars = racingCars.getRacingCars();*/
+
+    }
+
 
 
 

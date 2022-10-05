@@ -3,16 +3,21 @@ package racingcar.model;
 import racingcar.exception.MessageMaker;
 import racingcar.utils.StringUtils;
 
-public class RacingCars {
+import java.util.List;
+
+public class RacingCarCollection {
     private static final String INVALID_CARNAMES = "자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다";
     private static final String CARNAME_DELIMITER = ",";
 
-    private RacingCars(String carNames){
+    private List<RacingCar> racingCars = null;
+    private RacingCarCollection(String carNames){
+
 
         validateNames(carNames);
+
     }
-    public static RacingCars createCars(String carNames) {
-        return new RacingCars(carNames);
+    public static RacingCarCollection create(String carNames) {
+        return new RacingCarCollection(carNames);
     }
 
     private void validateNames(String carNames){
@@ -25,4 +30,7 @@ public class RacingCars {
 
     }
 
+    public List<RacingCar> getRacingCars() {
+        return racingCars;
+    }
 }

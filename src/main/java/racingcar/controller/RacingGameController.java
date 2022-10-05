@@ -1,20 +1,20 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.model.RacingCars;
+import racingcar.model.RacingCarCollection;
 
 public class RacingGameController {
 
 
     public void start() {
         String carNames = Console.readLine();
-        RacingCars racingCars = requestRacingCars(carNames);
+        RacingCarCollection racingCars = requestRacingCarCollection(carNames);
 
 
     }
 
 
-    private RacingCars requestRacingCars(String carNames){
+    private RacingCarCollection requestRacingCarCollection(String carNames){
 
         while(true) {
             try {
