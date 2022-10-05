@@ -40,7 +40,7 @@ public class RacingCarCollection {
         List<RacingCar> racingCars = new ArrayList<>();
         String[] carNameTokens = carNames.split(CARNAME_DELIMITER);
         for(int i = 0; i < carNameTokens.length; i++){
-            racingCars.add(new RacingCar());
+            racingCars.add(new RacingCar(carNameTokens[i]));
         }
         return racingCars;
 
