@@ -30,6 +30,19 @@ public class RacingCarCollectionTest {
                     .hasMessageContaining("[ERROR]자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다");
         }
 
+        @Test
+        @DisplayName("입력값검증에서 쉼표로 구분한 문자열중 중복이 있으면 예외발생")
+        void throw_IllegalArgumentException_when_exist_duplicate_name() {
+
+            //given
+            String carNames = "awfwaf,awfwaf,VAWE";
+
+            //when,then
+            assertThatThrownBy(() -> RacingCarCollection.create(carNames))
+                    .isInstanceOf(IllegalArgumentException.class)
+                    .hasMessageContaining("[ERROR]자동차이름은 중복될 수 없습니다");
+        }
+
     }
 
 
@@ -38,7 +51,7 @@ public class RacingCarCollectionTest {
     void returns_carlist() {
 
         //given
-        String carNames = "awfwaf,aawfwaf";
+        String carNames = "awfwaf,aawVAfwaf,VOW";
 
         //when
         RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);
@@ -54,14 +67,14 @@ public class RacingCarCollectionTest {
     void returns_carlist_when_input_string_separated_by_commas() {
 
         //given
-        String carNames = "awfwaf,aawfwaf";
+        String carNames = "awfwaf,vawe,wab";
 
         //when
         RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);
         List<RacingCar> racingCars = racingCarCollection.getRacingCars();
 
         //then
-        assertThat(racingCars.size()).isEqualTo(2);
+        assertThat(racingCars.size()).isEqualTo(3);
 
     }
 
