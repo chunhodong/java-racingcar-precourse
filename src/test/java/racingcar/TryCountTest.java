@@ -1,0 +1,62 @@
+package racingcar;
+
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+import racingcar.model.board.TryCount;
+import racingcar.model.car.RacingCar;
+
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
+
+public class TryCountTest {
+
+
+    @Test
+    @DisplayName("생성자메소드 입력값검증에서 문자열이 null이면 예외발생")
+    void throw_NullPointException_when_null() {
+
+        //given
+        String count = null;
+
+        //when,then
+        assertThatThrownBy(() -> new TryCount(count))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("[ERROR]횟수가 존재하지 않습니다");
+    }
+
+
+    @Test
+    @DisplayName("생성자메소드 입력값검증에서 문자열이 양수가 아니면 예외발생")
+    void throw_IllegalArgumentException_when_not_number() {
+
+        //given
+        String count = "-123";
+
+        //when,then
+        assertThatThrownBy(() -> new TryCount(count))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
+    }
+
+
+    @Test
+    @DisplayName("생성자메소드 입력값검증에서 입력한수가 0이면면 예외발생")
+    void throw_IllegalArgumentException_when_not_negative_number() {
+
+        //given
+        String count = "00";
+
+        //when,then
+        assertThatThrownBy(() -> new TryCount(count))
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
+    }
+
+
+
+
+
+
+
+
+
+}
