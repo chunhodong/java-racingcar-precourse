@@ -3,11 +3,11 @@ package racingcar.model;
 public class RacingCar {
 
     private CarName carName;
-    private Position position;
+    private CarPosition carPosition;
     public RacingCar(String name){
 
         this.carName = new CarName(name);
-        this.position = new Position();
+        this.carPosition = new CarPosition();
     }
 
 }
