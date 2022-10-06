@@ -19,6 +19,10 @@ public class RacingGameBoard {
     }
 
     public void run(TryCount tryCount) {
+        while (tryCount.next()){
+            racingCarCollection.move();
+        }
+        isEnd = true;
 
     }
 
