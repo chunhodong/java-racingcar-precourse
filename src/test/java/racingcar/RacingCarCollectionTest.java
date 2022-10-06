@@ -51,7 +51,7 @@ public class RacingCarCollectionTest {
     void returns_carlist() {
 
         //given
-        String carNames = "awfwaf,aawVAfwaf,VOW";
+        String carNames = "aw,aawV,VOW";
 
         //when
         RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);
@@ -67,7 +67,7 @@ public class RacingCarCollectionTest {
     void returns_carlist_when_input_string_separated_by_commas() {
 
         //given
-        String carNames = "awfwaf,vawe,wab";
+        String carNames = "awfek,vawe,wab";
 
         //when
         RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);

@@ -3,6 +3,7 @@ package racingcar.model;
 import racingcar.exception.MessageMaker;
 
 public class Name {
+    private static final String NULL_NAME = "이름이 존재하지 않습니다";
     private static final String EMPTY_NAME = "빈값은 포함될 수 없습니다";
     private static final String NOT_ALLOW_SIZE = "5글자 이하의 이름을 입력해야합니다";
 
@@ -15,10 +16,13 @@ public class Name {
     }
 
     private void validateEmpty(String name){
-        if(name == null || name.isEmpty())throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
+        if(name == null)throw new NullPointerException(MessageMaker.getMessage(NULL_NAME));
         if(isEmpty(name)) throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
     }
     private boolean isEmpty(String name){
+
+        if(name.isEmpty())throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
+
         int emptyCount = 0;
         for(int i = 0; i < name.length(); i++){
             emptyCount += checkEmptyCharacter(name.charAt(i));
