@@ -5,6 +5,7 @@ import racingcar.model.car.RacingCarCollection;
 
 public class RacingGameBoard {
     private static final String NULL_CAR_COLLECTION = "자동차컬렉션이 존재하지 않습니다";
+    private static final String NULL_TRY_COUNT = "시도횟수를 입력해야 합니다";
     private static final String NOT_END_GAME = "게임이 끝나야 확인할 수 있습니다";
     private boolean isEnd = false;
 
@@ -19,6 +20,7 @@ public class RacingGameBoard {
     }
 
     public void run(TryCount tryCount) {
+        if(tryCount == null)throw new NullPointerException(MessageMaker.getMessage(NULL_TRY_COUNT));
         while (tryCount.next()){
             racingCarCollection.move();
         }

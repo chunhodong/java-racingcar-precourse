@@ -38,4 +38,20 @@ public class RacingGameBoardTest {
     }
 
 
+    @Test
+    @DisplayName("run메소드는 입력값이없으면 예외발생")
+    void throw_NullPointException_when_called_run_by_null() {
+
+
+        //given
+        RacingGameBoard racingCarCollection = new RacingGameBoard(RacingCarCollection.create("a,b,c"));
+
+        //when,then
+        assertThatThrownBy(() -> racingCarCollection.run(null))
+                .isInstanceOf(NullPointerException.class)
+                .hasMessageContaining("[ERROR]시도횟수를 입력해야 합니다");
+    }
+
+
+
 }
