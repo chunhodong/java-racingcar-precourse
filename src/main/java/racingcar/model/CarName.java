@@ -2,7 +2,7 @@ package racingcar.model;
 
 import racingcar.exception.MessageMaker;
 
-public class Name {
+public class CarName {
 
     private static final String NULL_NAME = "이름이 존재하지 않습니다";
     private static final String EMPTY_NAME = "빈값은 포함될 수 없습니다";
@@ -11,7 +11,7 @@ public class Name {
 
     private String name;
 
-    public Name(String name){
+    public CarName(String name){
         validateEmpty(name);
         validateSize(name);
         this.name = name;

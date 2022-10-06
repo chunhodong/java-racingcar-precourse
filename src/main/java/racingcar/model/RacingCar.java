@@ -2,11 +2,11 @@ package racingcar.model;
 
 public class RacingCar {
 
-    private Name name;
+    private CarName carName;
     private Position position;
     public RacingCar(String name){
 
-        this.name = new Name(name);
+        this.carName = new CarName(name);
         this.position = new Position();
     }
 
