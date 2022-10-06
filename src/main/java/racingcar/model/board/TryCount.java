@@ -7,7 +7,7 @@ import java.util.regex.Pattern;
 public class TryCount {
     private static final String NULL_COUNT = "횟수가 존재하지 않습니다";
     private static final String NOT_ALLOW_CHARACTER = "횟수는 0보다큰 수만 허용합니다";
-    private static final int MIN_ALLOW_NUMBER = 1;
+    private static final int NOT_ALLOW_NUMBER = 0;
     private int count;
     public TryCount(String count){
         validateNull(count);
@@ -25,9 +25,14 @@ public class TryCount {
         if(!Pattern.matches("^[0-9]+$",count)){
             throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_CHARACTER));
         }
-        if(Integer.parseInt(count) < MIN_ALLOW_NUMBER)
+        if(Integer.parseInt(count) == NOT_ALLOW_NUMBER)
             throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_CHARACTER));
     }
 
 
+    public boolean next() {
+        if(count == NOT_ALLOW_NUMBER)return false;
+        count--;
+        return true;
+    }
 }

@@ -5,6 +5,11 @@ import org.junit.jupiter.api.Test;
 import racingcar.model.board.TryCount;
 import racingcar.model.car.RacingCar;
 
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TryCountTest {
@@ -40,7 +45,7 @@ public class TryCountTest {
 
     @Test
     @DisplayName("생성자메소드 입력값검증에서 입력한수가 0이면면 예외발생")
-    void throw_IllegalArgumentException_when_not_negative_number() {
+    void throw_IllegalArgumentException_when_zero_number() {
 
         //given
         String count = "00";
@@ -50,6 +55,38 @@ public class TryCountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
     }
+
+
+
+    @Test
+    @DisplayName("next메소드는 값이 count값이 0보다크면 true반환")
+    void return_true_when_greater_than_0() {
+        //given
+        TryCount tryCount = new TryCount("3");
+
+        //when
+        boolean hasNext = tryCount.next();
+
+        //then
+        assertThat(hasNext).isEqualTo(true);
+    }
+
+
+    @Test
+    @DisplayName("next메소드는 값이 count값이 0이면 false반환")
+    void return_false_when_equals_0() {
+        //given
+        TryCount tryCount = new TryCount("2");
+
+        //when
+        tryCount.next();
+        tryCount.next();
+        boolean hasNext = tryCount.next();
+
+        //then
+        assertThat(hasNext).isEqualTo(false);
+    }
+
 
 
 

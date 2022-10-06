@@ -17,7 +17,7 @@ public class RacingGameBoard {
         if(racingCarCollection == null)throw new NullPointerException(MessageMaker.getMessage(NULL_CAR_COLLECTION));
     }
 
-    public void run(int tryCount) {
-        if(tryCount <= 0)throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_COUNT));
+    public void run(TryCount tryCount) {
+
     }
 }
