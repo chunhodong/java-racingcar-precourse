@@ -7,12 +7,16 @@ public class CarPosition {
 
     private int position;
 
-    public CarPosition(){
-        this.position = 0;
-    }
-
     public CarPosition(int position){
         if(position < 0) throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_POSITION));
         this.position = position;
+    }
+
+    public void go() {
+        this.position++;
+    }
+
+    public int value() {
+        return position;
     }
 }

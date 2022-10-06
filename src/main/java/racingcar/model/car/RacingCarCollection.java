@@ -1,5 +1,6 @@
 package racingcar.model.car;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import racingcar.exception.MessageMaker;
 import racingcar.utils.StringUtils;
 
@@ -10,6 +11,8 @@ public class RacingCarCollection {
     private static final String INVALID_CARNAMES = "자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다";
     private static final String DUPLICATE_CARNAME = "자동차이름은 중복될 수 없습니다";
     private static final String CARNAME_DELIMITER = ",";
+    private static final int MIN_MOVABLE_NUMBER = 0;
+    private static final int MAX_MOVABLE_NUMBER = 9;
 
     private List<RacingCar> racingCars;
     private RacingCarCollection(String carNames){
@@ -49,5 +52,11 @@ public class RacingCarCollection {
 
     public List<RacingCar> getRacingCars() {
         return racingCars;
+    }
+
+    public void move() {
+        for(RacingCar racingCar : racingCars){
+            racingCar.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER,MAX_MOVABLE_NUMBER));
+        }
     }
 }

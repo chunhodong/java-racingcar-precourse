@@ -49,6 +49,27 @@ public class RacingCarTest {
                 .hasMessageContaining("[ERROR]5글자 이하의 이름을 입력해야합니다");
     }
 
+    @Test
+    @DisplayName("move메소드의 입력값이 4이상이면 포지션 1증가")
+    void returns() {
+
+        //given
+        String carName = "test";
+
+        //when
+        RacingCar racingCar = new RacingCar(carName);
+        racingCar.move(5);
+        racingCar.move(5);
+
+
+        //then
+        assertThat(racingCar.getCurrentPosition()).isEqualTo(2);
+    }
+
+
+
+
+
 
 
 
