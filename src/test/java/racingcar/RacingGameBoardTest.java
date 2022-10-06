@@ -2,8 +2,8 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.RacingCarCollection;
-import racingcar.model.RacingGameBoard;
+import racingcar.model.car.RacingCarCollection;
+import racingcar.model.board.RacingGameBoard;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 

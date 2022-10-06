@@ -1,6 +1,7 @@
-package racingcar.model;
+package racingcar.model.board;
 
 import racingcar.exception.MessageMaker;
+import racingcar.model.car.RacingCarCollection;
 
 public class RacingGameBoard {
     private static final String NULL_CAR_COLLECTION = "자동차컬렉션이 존재하지 않습니다";

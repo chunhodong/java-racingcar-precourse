@@ -1,7 +1,7 @@
 package racingcar.controller;
 
 import camp.nextstep.edu.missionutils.Console;
-import racingcar.model.RacingCarCollection;
+import racingcar.model.car.RacingCarCollection;
 
 public class RacingGameController {
 

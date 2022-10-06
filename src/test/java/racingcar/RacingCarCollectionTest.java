@@ -3,9 +3,8 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import org.mockito.internal.matchers.Null;
-import racingcar.model.RacingCar;
-import racingcar.model.RacingCarCollection;
+import racingcar.model.car.RacingCar;
+import racingcar.model.car.RacingCarCollection;
 
 import java.util.List;
 

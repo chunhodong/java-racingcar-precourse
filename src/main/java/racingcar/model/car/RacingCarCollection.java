@@ -1,4 +1,4 @@
-package racingcar.model;
+package racingcar.model.car;
 
 import racingcar.exception.MessageMaker;
 import racingcar.utils.StringUtils;
