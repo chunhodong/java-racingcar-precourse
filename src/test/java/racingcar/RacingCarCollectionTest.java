@@ -20,7 +20,7 @@ public class RacingCarCollectionTest {
 
         @Test
         @DisplayName("입력값검증에서 null값이면 예외발생")
-        void throw_IllegalArgumentException_when_null() {
+        void throw_NullPointException_when_null() {
 
             //given
             String carNames = null;

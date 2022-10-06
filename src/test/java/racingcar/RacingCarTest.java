@@ -16,7 +16,7 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("생성자메소드 입력값검증에서 문자열이 null이면 예외발생")
-    void throw_IllegalArgumentException_when_null() {
+    void throw_NullPointException_when_null() {
 
         //given
         String carName = null;
