@@ -3,12 +3,14 @@ package racingcar.model;
 import racingcar.exception.MessageMaker;
 
 public class Name {
+
     private static final String NULL_NAME = "이름이 존재하지 않습니다";
     private static final String EMPTY_NAME = "빈값은 포함될 수 없습니다";
     private static final String NOT_ALLOW_SIZE = "5글자 이하의 이름을 입력해야합니다";
-
     private static final int MAX_SIZE = 5;
+
     private String name;
+
     public Name(String name){
         validateEmpty(name);
         validateSize(name);

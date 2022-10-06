@@ -3,6 +3,7 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
+import org.mockito.internal.matchers.Null;
 import racingcar.model.RacingCar;
 import racingcar.model.RacingCarCollection;
 
@@ -16,6 +17,19 @@ public class RacingCarCollectionTest {
     @Nested
     @DisplayName("자동차컬렉션을 생성하는 create메소드는")
     class Create {
+
+        @Test
+        @DisplayName("입력값검증에서 null값이면 예외발생")
+        void throw_IllegalArgumentException_when_null() {
+
+            //given
+            String carNames = null;
+
+            //when,then
+            assertThatThrownBy(() -> RacingCarCollection.create(carNames))
+                    .isInstanceOf(NullPointerException.class)
+                    .hasMessageContaining("[ERROR]자동차이름이 존재해야합니다");
+        }
 
         @Test
         @DisplayName("입력값검증에서 쉼표로 구분한 문자열개수가 쉼표+1개수보다 적으면 예외발생")

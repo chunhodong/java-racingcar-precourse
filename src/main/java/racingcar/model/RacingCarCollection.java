@@ -6,6 +6,7 @@ import racingcar.utils.StringUtils;
 import java.util.*;
 
 public class RacingCarCollection {
+    private static final String NULL_CARNAMES = "자동차이름이 존재해야합니다";
     private static final String INVALID_CARNAMES = "자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다";
     private static final String DUPLICATE_CARNAME = "자동차이름은 중복될 수 없습니다";
     private static final String CARNAME_DELIMITER = ",";
@@ -27,7 +28,7 @@ public class RacingCarCollection {
     }
 
     private void validateNames(String carNames){
-        if(carNames == null) throw new IllegalArgumentException(MessageMaker.getMessage(INVALID_CARNAMES));
+        if(carNames == null) throw new NullPointerException(MessageMaker.getMessage(NULL_CARNAMES));
 
 
         int delimiterCount = StringUtils.getCharacterCount(carNames,CARNAME_DELIMITER.charAt(0));
