@@ -5,7 +5,8 @@ import racingcar.model.car.RacingCarCollection;
 
 public class RacingGameBoard {
     private static final String NULL_CAR_COLLECTION = "자동차컬렉션이 존재하지 않습니다";
-    private static final String NOT_ALLOW_COUNT = "시도횟수는 1 이상이어야 합니다";
+    private static final String NOT_END_GAME = "게임이 끝나야 확인할 수 있습니다";
+    private boolean isEnd = false;
 
     private RacingCarCollection racingCarCollection;
     public RacingGameBoard(RacingCarCollection racingCarCollection){
@@ -18,6 +19,11 @@ public class RacingGameBoard {
     }
 
     public void run(TryCount tryCount) {
+
+    }
+
+    public void getWinners(){
+        if(!isEnd)throw new IllegalStateException(MessageMaker.getMessage(NOT_END_GAME));
 
     }
 }
