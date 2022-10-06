@@ -59,4 +59,28 @@ public class RacingCarCollection {
             racingCar.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER,MAX_MOVABLE_NUMBER));
         }
     }
+
+    public List<RacingCar> getMaxPositionCars() {
+        int maxPosition = getMaxPosition();
+        List<RacingCar> maxPositionCars = new ArrayList<>();
+        for(RacingCar racingCar : racingCars){
+            addRacingCarWithPosition(maxPosition,racingCar,maxPositionCars);
+        }
+
+        return maxPositionCars;
+
+    }
+
+    private int getMaxPosition(){
+        return Collections
+                .max(racingCars, Comparator.comparingInt(RacingCar::getCurrentPosition))
+                .getCurrentPosition();
+    }
+
+
+    public List<RacingCar> addRacingCarWithPosition(int position,RacingCar racingCar,List<RacingCar> racingCars){
+        if(racingCar.getCurrentPosition() == position)
+            racingCars.add(racingCar);
+        return racingCars;
+    }
 }

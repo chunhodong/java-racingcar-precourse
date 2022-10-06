@@ -1,7 +1,10 @@
 package racingcar.model.board;
 
 import racingcar.exception.MessageMaker;
+import racingcar.model.car.RacingCar;
 import racingcar.model.car.RacingCarCollection;
+
+import java.util.List;
 
 public class RacingGameBoard {
     private static final String NULL_CAR_COLLECTION = "자동차컬렉션이 존재하지 않습니다";
@@ -28,8 +31,9 @@ public class RacingGameBoard {
 
     }
 
-    public void getWinners(){
+    public List<RacingCar> getWinners(){
         if(!isEnd)throw new IllegalStateException(MessageMaker.getMessage(NOT_END_GAME));
+        return racingCarCollection.getMaxPositionCars();
 
     }
 }

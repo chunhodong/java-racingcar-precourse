@@ -1,11 +1,20 @@
 package racingcar;
 
+import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import racingcar.model.board.RacingGameBoard;
+import racingcar.model.board.TryCount;
 import racingcar.model.car.RacingCar;
+import racingcar.model.car.RacingCarCollection;
+
+import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.mockStatic;
 
 public class RacingCarTest {
 
@@ -51,7 +60,7 @@ public class RacingCarTest {
 
     @Test
     @DisplayName("move메소드의 입력값이 4이상이면 포지션 1증가")
-    void returns() {
+    void get_plused_position_when_call_move() {
 
         //given
         String carName = "test";
@@ -65,12 +74,6 @@ public class RacingCarTest {
         //then
         assertThat(racingCar.getCurrentPosition()).isEqualTo(2);
     }
-
-
-
-
-
-
 
 
 }

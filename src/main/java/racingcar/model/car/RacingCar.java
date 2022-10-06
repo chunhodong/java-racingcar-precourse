@@ -3,7 +3,7 @@ package racingcar.model.car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCar implements Comparable<RacingCar> {
+public class RacingCar {
 
     private static final int VALUE_TO_ADVANCE = 4;
     private static final int INITIAL_POSITION = 0;
@@ -28,8 +28,4 @@ public class RacingCar implements Comparable<RacingCar> {
 
     }
 
-    @Override
-    public int compareTo(RacingCar racingCar) {
-        return getCurrentPosition() - racingCar.getCurrentPosition();
-    }
 }
