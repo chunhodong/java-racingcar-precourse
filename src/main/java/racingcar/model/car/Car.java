@@ -36,7 +36,7 @@ public class Car {
         return name.toString();
     }
 
-    public List<Boolean> getPositionRecords(){
+    public List<Boolean> getMoveRecords(){
         return moveRecords;
     }
 

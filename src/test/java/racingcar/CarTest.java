@@ -82,8 +82,8 @@ public class CarTest {
     }
 
     @Test
-    @DisplayName("getPositionRecords메소드는 자동차의 position기록 반환")
-    void returns_position_record_of_car() {
+    @DisplayName("getMoveRecords메소드는 자동차의 이동기록 반환")
+    void returns_move_record_of_car() {
 
         //given
         String carName = "test";
@@ -95,10 +95,10 @@ public class CarTest {
         car.move(5);
 
         //then
-        assertThat(car.getPositionRecords().size()).isEqualTo(3);
-        assertThat(car.getPositionRecords().get(0)).isEqualTo(true);
-        assertThat(car.getPositionRecords().get(1)).isEqualTo(false);
-        assertThat(car.getPositionRecords().get(0)).isEqualTo(true);
+        assertThat(car.getMoveRecords().size()).isEqualTo(3);
+        assertThat(car.getMoveRecords().get(0)).isEqualTo(true);
+        assertThat(car.getMoveRecords().get(1)).isEqualTo(false);
+        assertThat(car.getMoveRecords().get(0)).isEqualTo(true);
 
     }
 
