@@ -67,5 +67,44 @@ public class CarTest {
         assertThat(car.getCurrentPosition()).isEqualTo(2);
     }
 
+    @Test
+    @DisplayName("getName메소드는 자동차의 이름반환")
+    void returns_name_value_of_car() {
+
+        //given
+        String carName = "test";
+
+        //when
+        Car car = new Car(carName);
+
+        //then
+        assertThat(car.getName()).isEqualTo("test");
+    }
+
+    @Test
+    @DisplayName("getPositionRecords메소드는 자동차의 position기록 반환")
+    void returns_position_record_of_car() {
+
+        //given
+        String carName = "test";
+
+        //when
+        Car car = new Car(carName);
+        car.move(10);
+        car.move(1);
+        car.move(5);
+
+        //then
+        assertThat(car.getPositionRecords().size()).isEqualTo(3);
+        assertThat(car.getPositionRecords().get(0)).isEqualTo(true);
+        assertThat(car.getPositionRecords().get(1)).isEqualTo(false);
+        assertThat(car.getPositionRecords().get(0)).isEqualTo(true);
+
+    }
+
+
+
+
+
 
 }
