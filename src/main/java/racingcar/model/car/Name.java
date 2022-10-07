@@ -40,4 +40,9 @@ public class Name {
         if(name.length() > MAX_SIZE)throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_SIZE));
 
     }
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
