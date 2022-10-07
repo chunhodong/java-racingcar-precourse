@@ -1,5 +1,10 @@
 package racingcar.view;
 
+import racingcar.model.car.Car;
+import racingcar.model.car.CarDto;
+
+import java.util.List;
+
 public class RacingGameScreen {
 
     public void printEntry() {
@@ -13,6 +18,10 @@ public class RacingGameScreen {
     public void printRacingResult(String result) {
         System.out.println("실행 결과");
         System.out.println(result);
+    }
+
+    public void printRacingRecords(List<CarDto> carDtos){
+
     }
 
     public void printRacingWinner(String winner) {
