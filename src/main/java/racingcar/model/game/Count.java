@@ -10,18 +10,15 @@ public class Count {
     private static final int NOT_ALLOW_NUMBER = 0;
     private int count;
     public Count(String count){
-        validateNull(count);
         validateNumber(count);
         this.count = Integer.parseInt(count);
 
     }
 
 
-    private void validateNull(String count){
-        if(count == null)throw new NullPointerException(MessageMaker.getMessage(NULL_COUNT));
-    }
-
     private void validateNumber(String count){
+        if(count == null)throw new NullPointerException(MessageMaker.getMessage(NULL_COUNT));
+
         if(!Pattern.matches("^[0-9]+$",count)){
             throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_CHARACTER));
         }
