@@ -2,12 +2,12 @@ package racingcar;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import racingcar.model.board.TryCount;
+import racingcar.model.game.Count;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class TryCountTest {
+public class CountTest {
 
 
     @Test
@@ -18,7 +18,7 @@ public class TryCountTest {
         String count = null;
 
         //when,then
-        assertThatThrownBy(() -> new TryCount(count))
+        assertThatThrownBy(() -> new Count(count))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("[ERROR]횟수가 존재하지 않습니다");
     }
@@ -32,7 +32,7 @@ public class TryCountTest {
         String count = "-123";
 
         //when,then
-        assertThatThrownBy(() -> new TryCount(count))
+        assertThatThrownBy(() -> new Count(count))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
     }
@@ -46,7 +46,7 @@ public class TryCountTest {
         String count = "00";
 
         //when,then
-        assertThatThrownBy(() -> new TryCount(count))
+        assertThatThrownBy(() -> new Count(count))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
     }
@@ -57,10 +57,10 @@ public class TryCountTest {
     @DisplayName("next메소드는 값이 count값이 0보다크면 true반환")
     void return_true_when_greater_than_0() {
         //given
-        TryCount tryCount = new TryCount("3");
+        Count count = new Count("3");
 
         //when
-        boolean hasNext = tryCount.next();
+        boolean hasNext = count.next();
 
         //then
         assertThat(hasNext).isEqualTo(true);
@@ -71,12 +71,12 @@ public class TryCountTest {
     @DisplayName("next메소드는 값이 count값이 0이면 false반환")
     void return_false_when_equals_0() {
         //given
-        TryCount tryCount = new TryCount("2");
+        Count count = new Count("2");
 
         //when
-        tryCount.next();
-        tryCount.next();
-        boolean hasNext = tryCount.next();
+        count.next();
+        count.next();
+        boolean hasNext = count.next();
 
         //then
         assertThat(hasNext).isEqualTo(false);

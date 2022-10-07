@@ -4,9 +4,9 @@ import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
-import racingcar.model.board.TryCount;
+import racingcar.model.game.Count;
 import racingcar.model.car.CarCollection;
-import racingcar.model.board.RacingGameBoard;
+import racingcar.model.game.Board;
 
 import java.util.Arrays;
 
@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-public class RacingGameBoardTest {
+public class BoardTest {
 
     @Test
     @DisplayName("생성자메소드에서 자동차컬렉션객체가 null이면 예외발생")
@@ -26,7 +26,7 @@ public class RacingGameBoardTest {
         CarCollection carCollection = null;
 
         //when,then
-        assertThatThrownBy(() -> new RacingGameBoard(carCollection))
+        assertThatThrownBy(() -> new Board(carCollection))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("[ERROR]자동차컬렉션이 존재하지 않습니다");
     }
@@ -37,7 +37,7 @@ public class RacingGameBoardTest {
 
 
         //given
-        RacingGameBoard racingCarCollection = new RacingGameBoard(CarCollection.create("a,b,c"));
+        Board racingCarCollection = new Board(CarCollection.create("a,b,c"));
 
         //when,then
         assertThatThrownBy(() -> racingCarCollection.getWinners())
@@ -52,7 +52,7 @@ public class RacingGameBoardTest {
 
 
         //given
-        RacingGameBoard racingCarCollection = new RacingGameBoard(CarCollection.create("a,b,c"));
+        Board racingCarCollection = new Board(CarCollection.create("a,b,c"));
 
         //when,then
         assertThatThrownBy(() -> racingCarCollection.run(null))
@@ -69,13 +69,13 @@ public class RacingGameBoardTest {
         MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
-        RacingGameBoard racingGameBoard = new RacingGameBoard(CarCollection.create("a,b,c"));
+        Board board = new Board(CarCollection.create("a,b,c"));
 
         //when
-        racingGameBoard.run(new TryCount("2"));
+        board.run(new Count("2"));
 
         //then
-        assertThat(racingGameBoard.getWinners().size()).isEqualTo(2);
+        assertThat(board.getWinners().size()).isEqualTo(2);
 
     }
 

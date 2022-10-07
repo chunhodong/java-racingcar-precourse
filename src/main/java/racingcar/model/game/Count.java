@@ -1,15 +1,15 @@
-package racingcar.model.board;
+package racingcar.model.game;
 
 import racingcar.exception.MessageMaker;
 
 import java.util.regex.Pattern;
 
-public class TryCount {
+public class Count {
     private static final String NULL_COUNT = "횟수가 존재하지 않습니다";
     private static final String NOT_ALLOW_CHARACTER = "횟수는 0보다큰 수만 허용합니다";
     private static final int NOT_ALLOW_NUMBER = 0;
     private int count;
-    public TryCount(String count){
+    public Count(String count){
         validateNull(count);
         validateNumber(count);
         this.count = Integer.parseInt(count);
