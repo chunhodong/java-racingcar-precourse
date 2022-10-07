@@ -36,5 +36,9 @@ public class Count {
         return true;
     }
 
+    public boolean hasNext(){
+        return count > 0;
+    }
+
 
 }
