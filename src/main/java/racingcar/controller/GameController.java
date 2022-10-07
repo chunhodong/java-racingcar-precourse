@@ -3,7 +3,7 @@ package racingcar.controller;
 import camp.nextstep.edu.missionutils.Console;
 import racingcar.model.car.CarCollection;
 
-public class RacingGameController {
+public class GameController {
 
 
     public void start() {
