@@ -8,11 +8,13 @@ import java.util.List;
 
 public class BoardDto {
 
+    private int tryCount;
     private List<CarDto> entrys;
     private List<CarDto> winners;
     public BoardDto(Board board){
         this.winners = createWinners(board.getWinners());
         this.entrys = createEntrys(board.getEntrys());
+        this.tryCount = board.getTryCount();
     }
 
     private List<CarDto> createWinners(List<Car> winners){
@@ -38,4 +40,10 @@ public class BoardDto {
         }
         return carNames;
     }
+
+    public int getTryCount(){
+        return tryCount;
+    }
+
+
 }
