@@ -26,8 +26,9 @@ public class BoardDtoTest {
         MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
-        Board board = new Board(CarCollection.create("a,b,c"));
-        board.run(new Count("2"));
+        Board board = new Board(CarCollection.create("a,b,c"),new Count("5"));
+        board.run();
+
 
         //when
         BoardDto boardDto = new BoardDto(board);

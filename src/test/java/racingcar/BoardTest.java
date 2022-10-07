@@ -26,7 +26,7 @@ public class BoardTest {
         CarCollection carCollection = null;
 
         //when,then
-        assertThatThrownBy(() -> new Board(carCollection))
+        assertThatThrownBy(() -> new Board(carCollection,new Count("5")))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("[ERROR]자동차컬렉션이 존재하지 않습니다");
     }
@@ -37,29 +37,13 @@ public class BoardTest {
 
 
         //given
-        Board racingCarCollection = new Board(CarCollection.create("a,b,c"));
+        Board racingCarCollection = new Board(CarCollection.create("a,b,c"),new Count("5"));
 
         //when,then
         assertThatThrownBy(() -> racingCarCollection.getWinners())
                 .isInstanceOf(IllegalStateException.class)
                 .hasMessageContaining("[ERROR]게임이 끝나야 확인할 수 있습니다");
     }
-
-
-    @Test
-    @DisplayName("run메소드는 입력값이없으면 예외발생")
-    void throw_NullPointException_when_called_run_by_null() {
-
-
-        //given
-        Board racingCarCollection = new Board(CarCollection.create("a,b,c"));
-
-        //when,then
-        assertThatThrownBy(() -> racingCarCollection.run(null))
-                .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("[ERROR]시도횟수를 입력해야 합니다");
-    }
-
 
     @Test
     @DisplayName("getWinner메소드는 position값높은 자동차리스트를 반환 ")
@@ -69,10 +53,10 @@ public class BoardTest {
         MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
-        Board board = new Board(CarCollection.create("a,b,c"));
+        Board board = new Board(CarCollection.create("a,b,c"),new Count("2"));
 
         //when
-        board.run(new Count("2"));
+        board.run();
 
         //then
         assertThat(board.getWinners().size()).isEqualTo(2);
