@@ -1,22 +1,14 @@
 package racingcar;
 
-import camp.nextstep.edu.missionutils.Randoms;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.mockito.MockedStatic;
-import racingcar.model.board.RacingGameBoard;
-import racingcar.model.board.TryCount;
-import racingcar.model.car.RacingCar;
-import racingcar.model.car.RacingCarCollection;
-
-import java.util.Arrays;
+import racingcar.model.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
-public class RacingCarTest {
+public class CarTest {
 
 
     @Test
@@ -27,7 +19,7 @@ public class RacingCarTest {
         String carName = null;
 
         //when,then
-        assertThatThrownBy(() -> new RacingCar(carName))
+        assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("[ERROR]이름이 존재하지 않습니다");
     }
@@ -40,7 +32,7 @@ public class RacingCarTest {
         String carName = "";
 
         //when,then
-        assertThatThrownBy(() -> new RacingCar(carName))
+        assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]빈값은 포함될 수 없습니다");
     }
@@ -53,7 +45,7 @@ public class RacingCarTest {
         String carName = "abwegb";
 
         //when,then
-        assertThatThrownBy(() -> new RacingCar(carName))
+        assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR]5글자 이하의 이름을 입력해야합니다");
     }
@@ -66,13 +58,13 @@ public class RacingCarTest {
         String carName = "test";
 
         //when
-        RacingCar racingCar = new RacingCar(carName);
-        racingCar.move(5);
-        racingCar.move(5);
+        Car car = new Car(carName);
+        car.move(5);
+        car.move(5);
 
 
         //then
-        assertThat(racingCar.getCurrentPosition()).isEqualTo(2);
+        assertThat(car.getCurrentPosition()).isEqualTo(2);
     }
 
 

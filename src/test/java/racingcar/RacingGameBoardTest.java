@@ -5,7 +5,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
 import racingcar.model.board.TryCount;
-import racingcar.model.car.RacingCarCollection;
+import racingcar.model.car.CarCollection;
 import racingcar.model.board.RacingGameBoard;
 
 import java.util.Arrays;
@@ -23,10 +23,10 @@ public class RacingGameBoardTest {
 
 
         //given
-        RacingCarCollection racingCarCollection = null;
+        CarCollection carCollection = null;
 
         //when,then
-        assertThatThrownBy(() -> new RacingGameBoard(racingCarCollection))
+        assertThatThrownBy(() -> new RacingGameBoard(carCollection))
                 .isInstanceOf(NullPointerException.class)
                 .hasMessageContaining("[ERROR]자동차컬렉션이 존재하지 않습니다");
     }
@@ -37,7 +37,7 @@ public class RacingGameBoardTest {
 
 
         //given
-        RacingGameBoard racingCarCollection = new RacingGameBoard(RacingCarCollection.create("a,b,c"));
+        RacingGameBoard racingCarCollection = new RacingGameBoard(CarCollection.create("a,b,c"));
 
         //when,then
         assertThatThrownBy(() -> racingCarCollection.getWinners())
@@ -52,7 +52,7 @@ public class RacingGameBoardTest {
 
 
         //given
-        RacingGameBoard racingCarCollection = new RacingGameBoard(RacingCarCollection.create("a,b,c"));
+        RacingGameBoard racingCarCollection = new RacingGameBoard(CarCollection.create("a,b,c"));
 
         //when,then
         assertThatThrownBy(() -> racingCarCollection.run(null))
@@ -69,7 +69,7 @@ public class RacingGameBoardTest {
         MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
-        RacingGameBoard racingGameBoard = new RacingGameBoard(RacingCarCollection.create("a,b,c"));
+        RacingGameBoard racingGameBoard = new RacingGameBoard(CarCollection.create("a,b,c"));
 
         //when
         racingGameBoard.run(new TryCount("2"));

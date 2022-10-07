@@ -6,7 +6,7 @@ import racingcar.utils.StringUtils;
 
 import java.util.*;
 
-public class RacingCarCollection {
+public class CarCollection {
     private static final String NULL_CARNAMES = "자동차이름이 존재해야합니다";
     private static final String INVALID_CARNAMES = "자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다";
     private static final String DUPLICATE_CARNAME = "자동차이름은 중복될 수 없습니다";
@@ -14,15 +14,15 @@ public class RacingCarCollection {
     private static final int MIN_MOVABLE_NUMBER = 0;
     private static final int MAX_MOVABLE_NUMBER = 9;
 
-    private List<RacingCar> racingCars;
-    private RacingCarCollection(String carNames){
+    private List<Car> cars;
+    private CarCollection(String carNames){
         validateNames(carNames);
         validateDuplicate(carNames);
-        this.racingCars = createRacingCars(carNames);
+        this.cars = createRacingCars(carNames);
 
     }
-    public static RacingCarCollection create(String carNames) {
-        return new RacingCarCollection(carNames);
+    public static CarCollection create(String carNames) {
+        return new CarCollection(carNames);
     }
     private void validateDuplicate(String carNames){
         String[] carNameTokens = carNames.split(CARNAME_DELIMITER);
@@ -40,31 +40,31 @@ public class RacingCarCollection {
 
     }
 
-    private List<RacingCar> createRacingCars(String carNames){
-        List<RacingCar> racingCars = new ArrayList<>();
+    private List<Car> createRacingCars(String carNames){
+        List<Car> cars = new ArrayList<>();
         String[] carNameTokens = carNames.split(CARNAME_DELIMITER);
         for(int i = 0; i < carNameTokens.length; i++){
-            racingCars.add(new RacingCar(carNameTokens[i]));
+            cars.add(new Car(carNameTokens[i]));
         }
-        return racingCars;
+        return cars;
 
     }
 
-    public List<RacingCar> getRacingCars() {
-        return racingCars;
+    public List<Car> getRacingCars() {
+        return cars;
     }
 
     public void move() {
-        for(RacingCar racingCar : racingCars){
-            racingCar.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER,MAX_MOVABLE_NUMBER));
+        for(Car car : cars){
+            car.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER,MAX_MOVABLE_NUMBER));
         }
     }
 
-    public List<RacingCar> getMaxPositionCars() {
+    public List<Car> getMaxPositionCars() {
         int maxPosition = getMaxPosition();
-        List<RacingCar> maxPositionCars = new ArrayList<>();
-        for(RacingCar racingCar : racingCars){
-            addRacingCarWithPosition(maxPosition,racingCar,maxPositionCars);
+        List<Car> maxPositionCars = new ArrayList<>();
+        for(Car car : cars){
+            addRacingCarWithPosition(maxPosition, car,maxPositionCars);
         }
 
         return maxPositionCars;
@@ -73,14 +73,14 @@ public class RacingCarCollection {
 
     private int getMaxPosition(){
         return Collections
-                .max(racingCars, Comparator.comparingInt(RacingCar::getCurrentPosition))
+                .max(cars, Comparator.comparingInt(Car::getCurrentPosition))
                 .getCurrentPosition();
     }
 
 
-    public List<RacingCar> addRacingCarWithPosition(int position,RacingCar racingCar,List<RacingCar> racingCars){
-        if(racingCar.getCurrentPosition() == position)
-            racingCars.add(racingCar);
-        return racingCars;
+    public List<Car> addRacingCarWithPosition(int position, Car car, List<Car> cars){
+        if(car.getCurrentPosition() == position)
+            cars.add(car);
+        return cars;
     }
 }

@@ -1,8 +1,8 @@
 package racingcar.model.board;
 
 import racingcar.exception.MessageMaker;
-import racingcar.model.car.RacingCar;
-import racingcar.model.car.RacingCarCollection;
+import racingcar.model.car.Car;
+import racingcar.model.car.CarCollection;
 
 import java.util.List;
 
@@ -12,28 +12,28 @@ public class RacingGameBoard {
     private static final String NOT_END_GAME = "게임이 끝나야 확인할 수 있습니다";
     private boolean isEnd = false;
 
-    private RacingCarCollection racingCarCollection;
-    public RacingGameBoard(RacingCarCollection racingCarCollection){
-        validateEmpty(racingCarCollection);
-        this.racingCarCollection = racingCarCollection;
+    private CarCollection carCollection;
+    public RacingGameBoard(CarCollection carCollection){
+        validateEmpty(carCollection);
+        this.carCollection = carCollection;
     }
 
-    private void validateEmpty(RacingCarCollection racingCarCollection){
-        if(racingCarCollection == null)throw new NullPointerException(MessageMaker.getMessage(NULL_CAR_COLLECTION));
+    private void validateEmpty(CarCollection carCollection){
+        if(carCollection == null)throw new NullPointerException(MessageMaker.getMessage(NULL_CAR_COLLECTION));
     }
 
     public void run(TryCount tryCount) {
         if(tryCount == null)throw new NullPointerException(MessageMaker.getMessage(NULL_TRY_COUNT));
         while (tryCount.next()){
-            racingCarCollection.move();
+            carCollection.move();
         }
         isEnd = true;
 
     }
 
-    public List<RacingCar> getWinners(){
+    public List<Car> getWinners(){
         if(!isEnd)throw new IllegalStateException(MessageMaker.getMessage(NOT_END_GAME));
-        return racingCarCollection.getMaxPositionCars();
+        return carCollection.getMaxPositionCars();
 
     }
 }

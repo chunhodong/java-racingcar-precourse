@@ -3,28 +3,28 @@ package racingcar.model.car;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RacingCar {
+public class Car {
 
     private static final int VALUE_TO_ADVANCE = 4;
     private static final int INITIAL_POSITION = 0;
-    private CarName carName;
-    private CarPosition carPosition;
+    private Name name;
+    private Position position;
     private List<Integer> carPositionRecords;
-    public RacingCar(String name){
+    public Car(String name){
 
-        this.carName = new CarName(name);
-        this.carPosition = new CarPosition(INITIAL_POSITION);
+        this.name = new Name(name);
+        this.position = new Position(INITIAL_POSITION);
         this.carPositionRecords = new ArrayList<Integer>();
     }
 
     public void move(int value){
         if(value >= VALUE_TO_ADVANCE)
-            carPosition.go();
-        carPositionRecords.add(carPosition.value());
+            position.go();
+        carPositionRecords.add(position.value());
     }
 
     public int getCurrentPosition(){
-        return carPosition.value();
+        return position.value();
 
     }
 

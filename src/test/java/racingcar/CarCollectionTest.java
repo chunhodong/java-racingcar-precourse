@@ -3,15 +3,15 @@ package racingcar;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
-import racingcar.model.car.RacingCar;
-import racingcar.model.car.RacingCarCollection;
+import racingcar.model.car.Car;
+import racingcar.model.car.CarCollection;
 
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
-public class RacingCarCollectionTest {
+public class CarCollectionTest {
 
     @Nested
     @DisplayName("자동차컬렉션을 생성하는 create메소드는")
@@ -25,7 +25,7 @@ public class RacingCarCollectionTest {
             String carNames = null;
 
             //when,then
-            assertThatThrownBy(() -> RacingCarCollection.create(carNames))
+            assertThatThrownBy(() -> CarCollection.create(carNames))
                     .isInstanceOf(NullPointerException.class)
                     .hasMessageContaining("[ERROR]자동차이름이 존재해야합니다");
         }
@@ -38,7 +38,7 @@ public class RacingCarCollectionTest {
             String carNames = "awfwaf,";
 
             //when,then
-            assertThatThrownBy(() -> RacingCarCollection.create(carNames))
+            assertThatThrownBy(() -> CarCollection.create(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다");
         }
@@ -51,7 +51,7 @@ public class RacingCarCollectionTest {
             String carNames = "awfwaf,awfwaf,VAWE";
 
             //when,then
-            assertThatThrownBy(() -> RacingCarCollection.create(carNames))
+            assertThatThrownBy(() -> CarCollection.create(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
                     .hasMessageContaining("[ERROR]자동차이름은 중복될 수 없습니다");
         }
@@ -67,11 +67,11 @@ public class RacingCarCollectionTest {
         String carNames = "aw,aawV,VOW";
 
         //when
-        RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);
-        List<RacingCar> racingCars = racingCarCollection.getRacingCars();
+        CarCollection carCollection = CarCollection.create(carNames);
+        List<Car> cars = carCollection.getRacingCars();
 
         //then
-        assertThat(racingCars).isNotNull();
+        assertThat(cars).isNotNull();
 
     }
 
@@ -83,11 +83,11 @@ public class RacingCarCollectionTest {
         String carNames = "awfek,vawe,wab";
 
         //when
-        RacingCarCollection racingCarCollection = RacingCarCollection.create(carNames);
-        List<RacingCar> racingCars = racingCarCollection.getRacingCars();
+        CarCollection carCollection = CarCollection.create(carNames);
+        List<Car> cars = carCollection.getRacingCars();
 
         //then
-        assertThat(racingCars.size()).isEqualTo(3);
+        assertThat(cars.size()).isEqualTo(3);
 
     }
 
