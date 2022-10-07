@@ -38,5 +38,9 @@ public class Count {
         return remainCount > 0;
     }
 
+    public int getTryCount(){
+        return tryCount;
+    }
+
 
 }

@@ -45,4 +45,8 @@ public class Board {
     public List<Car> getEntrys(){
         return carCollection.getCars();
     }
+
+    public int getTryCount(){
+        return count.getTryCount();
+    }
 }

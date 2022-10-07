@@ -64,6 +64,24 @@ public class BoardTest {
     }
 
 
+    @Test
+    @DisplayName("getTryCount메소드는 시도횟수 반환 ")
+    void returns_try_count(){
+
+        //given
+        CarCollection carCollection = CarCollection.create("a,b,c");
+        Count count = new Count("3");
+
+        //when
+        Board board = new Board(carCollection,count);
+
+        //then
+        assertThat(board.getTryCount()).isEqualTo(3);
+
+    }
+
+
+
 
 
 }
