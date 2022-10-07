@@ -10,4 +10,12 @@ public class CarDto {
         this.name = car.getName();
         this.moveRecords = car.getMoveRecords();
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public List<Boolean> getMoveRecords() {
+        return moveRecords;
+    }
 }
