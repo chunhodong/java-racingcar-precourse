@@ -18,7 +18,7 @@ public class CarCollection {
     private CarCollection(String carNames){
         validateNames(carNames);
         validateDuplicate(carNames);
-        this.cars = createRacingCars(carNames);
+        this.cars = createCars(carNames);
 
     }
     public static CarCollection create(String carNames) {
@@ -40,9 +40,9 @@ public class CarCollection {
 
     }
 
-    private List<Car> createRacingCars(String carNames){
+    private List<Car> createCars(String names){
         List<Car> cars = new ArrayList<>();
-        String[] carNameTokens = carNames.split(CARNAME_DELIMITER);
+        String[] carNameTokens = names.split(CARNAME_DELIMITER);
         for(int i = 0; i < carNameTokens.length; i++){
             cars.add(new Car(carNameTokens[i]));
         }
@@ -50,7 +50,7 @@ public class CarCollection {
 
     }
 
-    public List<Car> getRacingCars() {
+    public List<Car> getCars() {
         return cars;
     }
 

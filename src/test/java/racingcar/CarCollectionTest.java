@@ -68,7 +68,7 @@ public class CarCollectionTest {
 
         //when
         CarCollection carCollection = CarCollection.create(carNames);
-        List<Car> cars = carCollection.getRacingCars();
+        List<Car> cars = carCollection.getCars();
 
         //then
         assertThat(cars).isNotNull();
@@ -84,7 +84,7 @@ public class CarCollectionTest {
 
         //when
         CarCollection carCollection = CarCollection.create(carNames);
-        List<Car> cars = carCollection.getRacingCars();
+        List<Car> cars = carCollection.getCars();
 
         //then
         assertThat(cars.size()).isEqualTo(3);
