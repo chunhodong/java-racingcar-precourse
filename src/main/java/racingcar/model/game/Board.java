@@ -36,4 +36,8 @@ public class Board {
         return carCollection.getMaxPositionCars();
 
     }
+
+    public List<Car> getEntrys(){
+        return carCollection.getCars();
+    }
 }
