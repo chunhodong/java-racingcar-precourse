@@ -73,13 +73,13 @@ public class CarCollection {
 
     private int getMaxPosition(){
         return Collections
-                .max(cars, Comparator.comparingInt(Car::getCurrentPosition))
-                .getCurrentPosition();
+                .max(cars, Comparator.comparingInt(Car::getPosition))
+                .getPosition();
     }
 
 
     public List<Car> addRacingCarWithPosition(int position, Car car, List<Car> cars){
-        if(car.getCurrentPosition() == position)
+        if(car.getPosition() == position)
             cars.add(car);
         return cars;
     }

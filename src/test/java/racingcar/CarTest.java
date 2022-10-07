@@ -64,7 +64,7 @@ public class CarTest {
 
 
         //then
-        assertThat(car.getCurrentPosition()).isEqualTo(2);
+        assertThat(car.getPosition()).isEqualTo(2);
     }
 
     @Test
