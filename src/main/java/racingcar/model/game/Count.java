@@ -8,11 +8,12 @@ public class Count {
     private static final String NULL_COUNT = "횟수가 존재하지 않습니다";
     private static final String NOT_ALLOW_CHARACTER = "횟수는 0보다큰 수만 허용합니다";
     private static final int NOT_ALLOW_NUMBER = 0;
-    private int count;
+    private int remainCount;
+    private int tryCount;
     public Count(String count){
         validateNumber(count);
-        this.count = Integer.parseInt(count);
-
+        this.tryCount = Integer.parseInt(count);
+        this.remainCount = tryCount;
     }
 
 
@@ -28,13 +29,13 @@ public class Count {
 
 
     public boolean next() {
-        if(count == NOT_ALLOW_NUMBER)return false;
-        count--;
+        if(remainCount == NOT_ALLOW_NUMBER)return false;
+        remainCount--;
         return true;
     }
 
     public boolean hasNext(){
-        return count > 0;
+        return remainCount > 0;
     }
 
 
