@@ -21,7 +21,7 @@ public class CarTest {
         //when,then
         assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("[ERROR]이름이 존재하지 않습니다");
+                .hasMessageContaining("[ERROR] 이름이 존재하지 않습니다");
     }
 
     @Test
@@ -34,7 +34,7 @@ public class CarTest {
         //when,then
         assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]빈값은 포함될 수 없습니다");
+                .hasMessageContaining("[ERROR] 빈값은 포함될 수 없습니다");
     }
 
     @Test
@@ -47,7 +47,7 @@ public class CarTest {
         //when,then
         assertThatThrownBy(() -> new Car(carName))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]5글자 이하의 이름을 입력해야합니다");
+                .hasMessageContaining("[ERROR] 5글자 이하의 이름을 입력해야합니다");
     }
 
     @Test

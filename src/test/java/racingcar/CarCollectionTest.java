@@ -40,7 +40,7 @@ public class CarCollectionTest {
             //when,then
             assertThatThrownBy(() -> CarCollection.create(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR]자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다");
+                    .hasMessageContaining("[ERROR] 자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다");
         }
 
         @Test
@@ -53,7 +53,7 @@ public class CarCollectionTest {
             //when,then
             assertThatThrownBy(() -> CarCollection.create(carNames))
                     .isInstanceOf(IllegalArgumentException.class)
-                    .hasMessageContaining("[ERROR]자동차이름은 중복될 수 없습니다");
+                    .hasMessageContaining("[ERROR] 자동차이름은 중복될 수 없습니다");
         }
 
     }

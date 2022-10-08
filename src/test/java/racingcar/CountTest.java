@@ -20,7 +20,7 @@ public class CountTest {
         //when,then
         assertThatThrownBy(() -> new Count(count))
                 .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("[ERROR]횟수가 존재하지 않습니다");
+                .hasMessageContaining("[ERROR] 횟수가 존재하지 않습니다");
     }
 
 
@@ -34,7 +34,7 @@ public class CountTest {
         //when,then
         assertThatThrownBy(() -> new Count(count))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
+                .hasMessageContaining("[ERROR] 횟수는 0보다큰 수만 허용합니다");
     }
 
 
@@ -48,7 +48,7 @@ public class CountTest {
         //when,then
         assertThatThrownBy(() -> new Count(count))
                 .isInstanceOf(IllegalArgumentException.class)
-                .hasMessageContaining("[ERROR]횟수는 0보다큰 수만 허용합니다");
+                .hasMessageContaining("[ERROR] 횟수는 0보다큰 수만 허용합니다");
     }
 
 

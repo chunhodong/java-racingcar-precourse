@@ -28,7 +28,7 @@ public class BoardTest {
         //when,then
         assertThatThrownBy(() -> new Board(carCollection,new Count("5")))
                 .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("[ERROR]자동차컬렉션이 존재하지 않습니다");
+                .hasMessageContaining("[ERROR] 자동차컬렉션이 존재하지 않습니다");
     }
 
     @Test
@@ -42,7 +42,7 @@ public class BoardTest {
         //when,then
         assertThatThrownBy(() -> racingCarCollection.getWinners())
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("[ERROR]게임이 끝나야 확인할 수 있습니다");
+                .hasMessageContaining("[ERROR] 게임이 끝나야 확인할 수 있습니다");
     }
 
     @Test
