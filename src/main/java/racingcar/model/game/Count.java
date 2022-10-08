@@ -9,7 +9,7 @@ public class Count {
     private static final String NOT_ALLOW_CHARACTER = "횟수는 0보다큰 수만 허용합니다";
     private static final int NOT_ALLOW_NUMBER = 0;
     private int remainCount;
-    private int tryCount;
+    private final int tryCount;
     public Count(String count){
         validateNumber(count);
         this.tryCount = Integer.parseInt(count);

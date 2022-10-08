@@ -20,9 +20,9 @@ public class GameOutputScreen {
     }
 
     private static void printRacingCarsRecord(List<CarDto> carDtos,int index){
-        for(int i = 0; i < carDtos.size(); i++){
-            System.out.print(carDtos.get(i).getName().concat(" : "));
-            printRacingCarMoveRecord(carDtos.get(i).getMoveRecords(),index);
+        for (CarDto carDto : carDtos) {
+            System.out.print(carDto.getName().concat(" : "));
+            printRacingCarMoveRecord(carDto.getMoveRecords(), index);
             System.out.println();
         }
     }

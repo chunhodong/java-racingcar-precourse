@@ -10,9 +10,8 @@ public class Board {
     private static final String NULL_CAR_COLLECTION = "자동차컬렉션이 존재하지 않습니다";
     private static final String NULL_COUNT = "시도횟수가 존재하지 않습니다";
     private static final String NOT_END_GAME = "게임이 끝나야 확인할 수 있습니다";
-    private Count count;
-
-    private CarCollection carCollection;
+    private final Count count;
+    private final CarCollection carCollection;
     public Board(CarCollection carCollection,Count count){
         validateCollection(carCollection);
         validateCount(count);

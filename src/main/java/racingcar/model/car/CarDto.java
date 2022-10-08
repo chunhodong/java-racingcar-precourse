@@ -4,8 +4,8 @@ import java.util.List;
 
 public class CarDto {
 
-    private String name;
-    private List<Boolean> moveRecords;
+    private final String name;
+    private final List<Boolean> moveRecords;
     public CarDto(Car car){
         this.name = car.getName();
         this.moveRecords = car.getMoveRecords();

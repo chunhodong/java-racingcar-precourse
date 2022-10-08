@@ -7,9 +7,9 @@ public class Car {
 
     private static final int VALUE_TO_ADVANCE = 4;
     private static final int INITIAL_POSITION = 0;
-    private Name name;
-    private Position position;
-    private List<Boolean> moveRecords;
+    private final Name name;
+    private final Position position;
+    private final List<Boolean> moveRecords;
     public Car(String name){
 
         this.name = new Name(name);

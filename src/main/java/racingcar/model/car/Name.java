@@ -9,7 +9,7 @@ public class Name {
     private static final String NOT_ALLOW_SIZE = "5글자 이하의 이름을 입력해야합니다";
     private static final int MAX_SIZE = 5;
 
-    private String name;
+    private final String name;
 
     public Name(String name){
         validateEmpty(name);

@@ -14,7 +14,7 @@ public class CarCollection {
     private static final int MIN_MOVABLE_NUMBER = 0;
     private static final int MAX_MOVABLE_NUMBER = 9;
 
-    private List<Car> cars;
+    private final List<Car> cars;
     private CarCollection(String carNames){
         validateNames(carNames);
         validateDuplicate(carNames);
@@ -43,8 +43,8 @@ public class CarCollection {
     private List<Car> createCars(String names){
         List<Car> cars = new ArrayList<>();
         String[] carNameTokens = names.split(CARNAME_DELIMITER);
-        for(int i = 0; i < carNameTokens.length; i++){
-            cars.add(new Car(carNameTokens[i]));
+        for (String carNameToken : carNameTokens) {
+            cars.add(new Car(carNameToken));
         }
         return cars;
 
@@ -78,9 +78,8 @@ public class CarCollection {
     }
 
 
-    public List<Car> addRacingCarWithPosition(int position, Car car, List<Car> cars){
+    public void addRacingCarWithPosition(int position, Car car, List<Car> cars){
         if(car.getPosition() == position)
             cars.add(car);
-        return cars;
     }
 }
