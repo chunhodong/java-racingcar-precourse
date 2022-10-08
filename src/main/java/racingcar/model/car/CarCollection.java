@@ -7,13 +7,13 @@ import racingcar.utils.StringUtils;
 import java.util.*;
 
 public class CarCollection {
+
     private static final String NULL_CARNAMES = "자동차이름이 존재해야합니다";
     private static final String INVALID_CARNAMES = "자동차이름은 쉼표를 기준으로 구분할 수 있어야합니다";
     private static final String DUPLICATE_CARNAME = "자동차이름은 중복될 수 없습니다";
     private static final String CARNAME_DELIMITER = ",";
     private static final int MIN_MOVABLE_NUMBER = 0;
     private static final int MAX_MOVABLE_NUMBER = 9;
-
     private final List<Car> cars;
 
     private CarCollection(String carNames) {

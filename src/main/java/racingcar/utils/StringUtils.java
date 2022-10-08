@@ -1,6 +1,7 @@
 package racingcar.utils;
 
 public class StringUtils {
+
     public static int getCharacterCount(String src, char find) {
         int count = 0;
         for (int i = 0; i < src.length(); i++) {

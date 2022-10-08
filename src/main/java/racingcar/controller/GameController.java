@@ -10,7 +10,6 @@ import racingcar.view.GameOutputScreen;
 
 public class GameController {
 
-
     public void start() {
         GameInputScreen.printCarEntry();
         CarCollection racingCars = requestRacingCarCollection();

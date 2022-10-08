@@ -8,7 +8,6 @@ public class Name {
     private static final String EMPTY_NAME = "빈값은 포함될 수 없습니다";
     private static final String NOT_ALLOW_SIZE = "5글자 이하의 이름을 입력해야합니다";
     private static final int MAX_SIZE = 5;
-
     private final String name;
 
     public Name(String name) {
