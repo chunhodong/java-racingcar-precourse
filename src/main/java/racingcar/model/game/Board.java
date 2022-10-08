@@ -21,7 +21,6 @@ public class Board {
         this.count = count;
     }
 
-
     private void validateCollection(CarCollection carCollection) {
         if (carCollection == null) throw new NullPointerException(MessageMaker.getMessage(NULL_CAR_COLLECTION));
     }

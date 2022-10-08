@@ -60,7 +60,7 @@ public class CarCollection {
     }
 
     public List<Car> getMaxPositionCars() {
-        int maxPosition = getMaxPosition();
+        int maxPosition = getMaxPositionOfCars();
         List<Car> maxPositionCars = new ArrayList<>();
         for (Car car : cars) {
             addRacingCarWithPosition(maxPosition, car, maxPositionCars);
@@ -68,7 +68,7 @@ public class CarCollection {
         return maxPositionCars;
     }
 
-    private int getMaxPosition() {
+    private int getMaxPositionOfCars() {
         return Collections
                 .max(cars, Comparator.comparingInt(Car::getPosition))
                 .getPosition();
