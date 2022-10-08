@@ -37,7 +37,7 @@ public class Board {
 
     public List<Car> getWinners() {
         if (count.hasNext()) throw new IllegalStateException(MessageMaker.getMessage(NOT_END_GAME));
-        return carCollection.getMaxPositionCars();
+        return carCollection.getCarsWithMaxPosition();
     }
 
     public List<Car> getEntrys() {

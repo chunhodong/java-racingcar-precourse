@@ -59,7 +59,7 @@ public class CarCollection {
         }
     }
 
-    public List<Car> getMaxPositionCars() {
+    public List<Car> getCarsWithMaxPosition() {
         int maxPosition = getMaxPositionOfCars();
         List<Car> maxPositionCars = new ArrayList<>();
         for (Car car : cars) {
