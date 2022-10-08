@@ -53,7 +53,7 @@ public class CarCollection {
         return cars;
     }
 
-    public void move() {
+    public void moveAll() {
         for (Car car : cars) {
             car.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER, MAX_MOVABLE_NUMBER));
         }
