@@ -63,7 +63,7 @@ public class BoardDtoTest {
         assertThat(boardDto.getEntrys().get(0).getName()).isEqualTo("a");
         assertThat(boardDto.getEntrys().get(1).getName()).isEqualTo("b");
         assertThat(boardDto.getEntrys().get(2).getName()).isEqualTo("c");
-
+        mock.close();
 
     }
 }

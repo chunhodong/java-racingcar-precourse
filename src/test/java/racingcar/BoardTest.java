@@ -60,7 +60,7 @@ public class BoardTest {
 
         //then
         assertThat(board.getWinners().size()).isEqualTo(2);
-
+        mock.close();
     }
 
 
