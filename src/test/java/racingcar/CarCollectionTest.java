@@ -27,7 +27,7 @@ public class CarCollectionTest {
             //when,then
             assertThatThrownBy(() -> CarCollection.create(carNames))
                     .isInstanceOf(NullPointerException.class)
-                    .hasMessageContaining("[ERROR]자동차이름이 존재해야합니다");
+                    .hasMessageContaining("[ERROR] 자동차이름이 존재해야합니다");
         }
 
         @Test
