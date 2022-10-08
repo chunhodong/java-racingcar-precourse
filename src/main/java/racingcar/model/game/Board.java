@@ -31,7 +31,7 @@ public class Board {
 
     public void run() {
         while (count.next()) {
-            carCollection.moveAll();
+            carCollection.moveCars();
         }
     }
 
