@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -16,6 +18,18 @@ import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mockStatic;
 
 public class BoardTest {
+
+    private static MockedStatic<Randoms> mock;
+
+    @BeforeAll
+    public static void init() {
+        mock = mockStatic(Randoms.class);
+    }
+
+    @AfterAll
+    public static void close() {
+        mock.close();
+    }
 
     @Test
     @DisplayName("생성자메소드에서 자동차컬렉션객체가 null이면 예외발생")
@@ -50,7 +64,6 @@ public class BoardTest {
     void returns_racingcars_with_max_position(){
 
         //given
-        MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
         Board board = new Board(CarCollection.create("a,b,c"),new Count("2"));
@@ -60,7 +73,6 @@ public class BoardTest {
 
         //then
         assertThat(board.getWinners().size()).isEqualTo(2);
-        mock.close();
     }
 
 

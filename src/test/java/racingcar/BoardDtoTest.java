@@ -1,6 +1,8 @@
 package racingcar;
 
 import camp.nextstep.edu.missionutils.Randoms;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.MockedStatic;
@@ -17,13 +19,23 @@ import static org.mockito.Mockito.mockStatic;
 
 public class BoardDtoTest {
 
+    private static MockedStatic<Randoms> mock;
+
+    @BeforeAll
+    public static void init() {
+        mock = mockStatic(Randoms.class);
+    }
+
+    @AfterAll
+    public static void close() {
+        mock.close();
+    }
 
     @Test
     @DisplayName("getWinner메소드는 position값높은 자동차이름를 반환 ")
     void returns_racingcars_with_max_position(){
 
         //given
-        MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
         Board board = new Board(CarCollection.create("a,b,c"),new Count("5"));
@@ -47,7 +59,6 @@ public class BoardDtoTest {
     void returns_racingcars_that_participated_game(){
 
         //given
-        MockedStatic<Randoms> mock = mockStatic(Randoms.class);
         mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
                 .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
         Board board = new Board(CarCollection.create("a,b,c"),new Count("5"));
@@ -63,7 +74,6 @@ public class BoardDtoTest {
         assertThat(boardDto.getEntrys().get(0).getName()).isEqualTo("a");
         assertThat(boardDto.getEntrys().get(1).getName()).isEqualTo("b");
         assertThat(boardDto.getEntrys().get(2).getName()).isEqualTo("c");
-        mock.close();
 
     }
 }
