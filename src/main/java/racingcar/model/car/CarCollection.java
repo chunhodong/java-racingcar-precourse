@@ -15,39 +15,38 @@ public class CarCollection {
     private static final int MAX_MOVABLE_NUMBER = 9;
 
     private final List<Car> cars;
-    private CarCollection(String carNames){
+
+    private CarCollection(String carNames) {
         validateNames(carNames);
         validateDuplicate(carNames);
         this.cars = createCars(carNames);
-
     }
+
     public static CarCollection create(String carNames) {
         return new CarCollection(carNames);
     }
-    private void validateDuplicate(String carNames){
+
+    private void validateDuplicate(String carNames) {
         String[] carNameTokens = carNames.split(CARNAME_DELIMITER);
-        if(new HashSet(Arrays.asList(carNameTokens)).size() != carNameTokens.length)
+        if (new HashSet(Arrays.asList(carNameTokens)).size() != carNameTokens.length)
             throw new IllegalArgumentException(MessageMaker.getMessage(DUPLICATE_CARNAME));
     }
 
-    private void validateNames(String carNames){
-        if(carNames == null) throw new NullPointerException(MessageMaker.getMessage(NULL_CARNAMES));
-
-
-        int delimiterCount = StringUtils.getCharacterCount(carNames,CARNAME_DELIMITER.charAt(0));
+    private void validateNames(String carNames) {
+        if (carNames == null) throw new NullPointerException(MessageMaker.getMessage(NULL_CARNAMES));
+        int delimiterCount = StringUtils.getCharacterCount(carNames, CARNAME_DELIMITER.charAt(0));
         String[] carNameTokens = carNames.split(CARNAME_DELIMITER);
-        if(carNameTokens.length != delimiterCount + 1)throw new IllegalArgumentException(MessageMaker.getMessage(INVALID_CARNAMES));
-
+        if (carNameTokens.length != delimiterCount + 1)
+            throw new IllegalArgumentException(MessageMaker.getMessage(INVALID_CARNAMES));
     }
 
-    private List<Car> createCars(String names){
+    private List<Car> createCars(String names) {
         List<Car> cars = new ArrayList<>();
         String[] carNameTokens = names.split(CARNAME_DELIMITER);
         for (String carNameToken : carNameTokens) {
             cars.add(new Car(carNameToken));
         }
         return cars;
-
     }
 
     public List<Car> getCars() {
@@ -55,31 +54,29 @@ public class CarCollection {
     }
 
     public void move() {
-        for(Car car : cars){
-            car.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER,MAX_MOVABLE_NUMBER));
+        for (Car car : cars) {
+            car.move(Randoms.pickNumberInRange(MIN_MOVABLE_NUMBER, MAX_MOVABLE_NUMBER));
         }
     }
 
     public List<Car> getMaxPositionCars() {
         int maxPosition = getMaxPosition();
         List<Car> maxPositionCars = new ArrayList<>();
-        for(Car car : cars){
-            addRacingCarWithPosition(maxPosition, car,maxPositionCars);
+        for (Car car : cars) {
+            addRacingCarWithPosition(maxPosition, car, maxPositionCars);
         }
-
         return maxPositionCars;
-
     }
 
-    private int getMaxPosition(){
+    private int getMaxPosition() {
         return Collections
                 .max(cars, Comparator.comparingInt(Car::getPosition))
                 .getPosition();
     }
 
 
-    public void addRacingCarWithPosition(int position, Car car, List<Car> cars){
-        if(car.getPosition() == position)
+    public void addRacingCarWithPosition(int position, Car car, List<Car> cars) {
+        if (car.getPosition() == position)
             cars.add(car);
     }
 }

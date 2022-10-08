@@ -6,7 +6,8 @@ public class CarDto {
 
     private final String name;
     private final List<Boolean> moveRecords;
-    public CarDto(Car car){
+
+    public CarDto(Car car) {
         this.name = car.getName();
         this.moveRecords = car.getMoveRecords();
     }

@@ -6,15 +6,12 @@ import racingcar.model.car.Car;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
-import static org.mockito.Mockito.mockStatic;
 
 public class CarTest {
-
 
     @Test
     @DisplayName("생성자메소드 입력값검증에서 문자열이 null이면 예외발생")
     void throw_NullPointException_when_null() {
-
         //given
         String carName = null;
 
@@ -27,7 +24,6 @@ public class CarTest {
     @Test
     @DisplayName("생성자메소드 입력값검증에서 문자열이 빈값이면 예외발생")
     void throw_IllegalArgumentException_when_empty_string() {
-
         //given
         String carName = "";
 
@@ -40,7 +36,6 @@ public class CarTest {
     @Test
     @DisplayName("생성자메소드 입력값검증에서 문자열사이즈가 5보다 크면 예외발생")
     void throw_IllegalArgumentException_when_not_separation_by_commas() {
-
         //given
         String carName = "abwegb";
 
@@ -53,7 +48,6 @@ public class CarTest {
     @Test
     @DisplayName("move메소드의 입력값이 4이상이면 포지션 1증가")
     void get_plused_position_when_call_move() {
-
         //given
         String carName = "test";
 
@@ -62,7 +56,6 @@ public class CarTest {
         car.move(5);
         car.move(5);
 
-
         //then
         assertThat(car.getPosition()).isEqualTo(2);
     }
@@ -70,7 +63,6 @@ public class CarTest {
     @Test
     @DisplayName("getName메소드는 자동차의 이름반환")
     void returns_name_value_of_car() {
-
         //given
         String carName = "test";
 
@@ -84,7 +76,6 @@ public class CarTest {
     @Test
     @DisplayName("getMoveRecords메소드는 자동차의 이동기록 반환")
     void returns_move_record_of_car() {
-
         //given
         String carName = "test";
 
@@ -101,10 +92,6 @@ public class CarTest {
         assertThat(car.getMoveRecords().get(0)).isEqualTo(true);
 
     }
-
-
-
-
 
 
 }

@@ -12,7 +12,8 @@ public class Board {
     private static final String NOT_END_GAME = "게임이 끝나야 확인할 수 있습니다";
     private final Count count;
     private final CarCollection carCollection;
-    public Board(CarCollection carCollection,Count count){
+
+    public Board(CarCollection carCollection, Count count) {
         validateCollection(carCollection);
         validateCount(count);
         this.carCollection = carCollection;
@@ -20,32 +21,30 @@ public class Board {
     }
 
 
-    private void validateCollection(CarCollection carCollection){
-        if(carCollection == null)throw new NullPointerException(MessageMaker.getMessage(NULL_CAR_COLLECTION));
+    private void validateCollection(CarCollection carCollection) {
+        if (carCollection == null) throw new NullPointerException(MessageMaker.getMessage(NULL_CAR_COLLECTION));
     }
 
-    private void validateCount(Count count){
-        if(count == null)throw new NullPointerException(MessageMaker.getMessage(NULL_COUNT));
+    private void validateCount(Count count) {
+        if (count == null) throw new NullPointerException(MessageMaker.getMessage(NULL_COUNT));
     }
 
     public void run() {
-        while (count.next()){
+        while (count.next()) {
             carCollection.move();
         }
-
     }
 
-    public List<Car> getWinners(){
-        if(count.hasNext())throw new IllegalStateException(MessageMaker.getMessage(NOT_END_GAME));
+    public List<Car> getWinners() {
+        if (count.hasNext()) throw new IllegalStateException(MessageMaker.getMessage(NOT_END_GAME));
         return carCollection.getMaxPositionCars();
-
     }
 
-    public List<Car> getEntrys(){
+    public List<Car> getEntrys() {
         return carCollection.getCars();
     }
 
-    public int getTryCount(){
+    public int getTryCount() {
         return count.getTryCount();
     }
 }

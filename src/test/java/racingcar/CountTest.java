@@ -9,11 +9,9 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class CountTest {
 
-
     @Test
     @DisplayName("생성자메소드 입력값검증에서 문자열이 null이면 예외발생")
     void throw_NullPointException_when_null() {
-
         //given
         String count = null;
 
@@ -23,11 +21,9 @@ public class CountTest {
                 .hasMessageContaining("[ERROR] 횟수가 존재하지 않습니다");
     }
 
-
     @Test
     @DisplayName("생성자메소드 입력값검증에서 문자열이 양수가 아니면 예외발생")
     void throw_IllegalArgumentException_when_not_number() {
-
         //given
         String count = "-123";
 
@@ -37,11 +33,9 @@ public class CountTest {
                 .hasMessageContaining("[ERROR] 횟수는 0보다큰 수만 허용합니다");
     }
 
-
     @Test
     @DisplayName("생성자메소드 입력값검증에서 입력한수가 0이면면 예외발생")
     void throw_IllegalArgumentException_when_zero_number() {
-
         //given
         String count = "00";
 
@@ -50,8 +44,6 @@ public class CountTest {
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessageContaining("[ERROR] 횟수는 0보다큰 수만 허용합니다");
     }
-
-
 
     @Test
     @DisplayName("next메소드는 값이 count값이 0보다크면 true반환")
@@ -65,7 +57,6 @@ public class CountTest {
         //then
         assertThat(hasNext).isEqualTo(true);
     }
-
 
     @Test
     @DisplayName("next메소드는 값이 count값이 0이면 false반환")
@@ -81,14 +72,6 @@ public class CountTest {
         //then
         assertThat(hasNext).isEqualTo(false);
     }
-
-
-
-
-
-
-
-
 
 
 }

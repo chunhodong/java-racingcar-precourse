@@ -11,34 +11,32 @@ public class Name {
 
     private final String name;
 
-    public Name(String name){
+    public Name(String name) {
         validateEmpty(name);
         validateSize(name);
         this.name = name;
     }
 
-    private void validateEmpty(String name){
-        if(name == null)throw new NullPointerException(MessageMaker.getMessage(NULL_NAME));
-        if(isEmpty(name)) throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
+    private void validateEmpty(String name) {
+        if (name == null) throw new NullPointerException(MessageMaker.getMessage(NULL_NAME));
+        if (isEmpty(name)) throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
     }
-    private boolean isEmpty(String name){
 
-        if(name.isEmpty())throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
-
+    private boolean isEmpty(String name) {
+        if (name.isEmpty()) throw new IllegalArgumentException(MessageMaker.getMessage(EMPTY_NAME));
         int emptyCount = 0;
-        for(int i = 0; i < name.length(); i++){
+        for (int i = 0; i < name.length(); i++) {
             emptyCount += checkEmptyCharacter(name.charAt(i));
         }
         return emptyCount == name.length();
     }
-    private int checkEmptyCharacter(char c){
-        return c == ' ' ? 1 : 0;
 
+    private int checkEmptyCharacter(char c) {
+        return c == ' ' ? 1 : 0;
     }
 
-    private void validateSize(String name){
-        if(name.length() > MAX_SIZE)throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_SIZE));
-
+    private void validateSize(String name) {
+        if (name.length() > MAX_SIZE) throw new IllegalArgumentException(MessageMaker.getMessage(NOT_ALLOW_SIZE));
     }
 
     @Override

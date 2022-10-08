@@ -10,33 +10,31 @@ public class Car {
     private final Name name;
     private final Position position;
     private final List<Boolean> moveRecords;
-    public Car(String name){
 
+    public Car(String name) {
         this.name = new Name(name);
         this.position = new Position(INITIAL_POSITION);
         this.moveRecords = new ArrayList<>();
     }
 
-    public void move(int value){
-        if(value >= VALUE_TO_ADVANCE) {
+    public void move(int value) {
+        if (value >= VALUE_TO_ADVANCE) {
             position.go();
             moveRecords.add(true);
             return;
         }
         moveRecords.add(false);
-
     }
 
-    public int getPosition(){
+    public int getPosition() {
         return position.value();
-
     }
 
-    public String getName(){
+    public String getName() {
         return name.toString();
     }
 
-    public List<Boolean> getMoveRecords(){
+    public List<Boolean> getMoveRecords() {
         return moveRecords;
     }
 

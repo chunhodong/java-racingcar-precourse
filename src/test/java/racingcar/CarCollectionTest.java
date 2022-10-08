@@ -20,7 +20,6 @@ public class CarCollectionTest {
         @Test
         @DisplayName("입력값검증에서 null값이면 예외발생")
         void throw_NullPointException_when_null() {
-
             //given
             String carNames = null;
 
@@ -33,7 +32,6 @@ public class CarCollectionTest {
         @Test
         @DisplayName("입력값검증에서 쉼표로 구분한 문자열개수가 쉼표+1개수보다 적으면 예외발생")
         void throw_IllegalArgumentException_when_not_separation_by_commas() {
-
             //given
             String carNames = "awfwaf,";
 
@@ -46,7 +44,6 @@ public class CarCollectionTest {
         @Test
         @DisplayName("입력값검증에서 쉼표로 구분한 문자열중 중복이 있으면 예외발생")
         void throw_IllegalArgumentException_when_exist_duplicate_name() {
-
             //given
             String carNames = "awfwaf,awfwaf,VAWE";
 
@@ -62,7 +59,6 @@ public class CarCollectionTest {
     @Test
     @DisplayName("자동자객체를 담은 리스트생성")
     void returns_carlist() {
-
         //given
         String carNames = "aw,aawV,VOW";
 
@@ -72,13 +68,11 @@ public class CarCollectionTest {
 
         //then
         assertThat(cars).isNotNull();
-
     }
 
     @Test
     @DisplayName("쉼표로 구분된 문자열을 입력하면 쉼표개수+1만큼 자동자객체생성")
     void returns_carlist_when_input_string_separated_by_commas() {
-
         //given
         String carNames = "awfek,vawe,wab";
 
@@ -88,7 +82,6 @@ public class CarCollectionTest {
 
         //then
         assertThat(cars.size()).isEqualTo(3);
-
     }
 
 
