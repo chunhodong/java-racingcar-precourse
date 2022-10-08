@@ -40,4 +40,30 @@ public class BoardDtoTest {
         assertThat(boardDto.getWinners()[1]).isEqualTo("b");
 
     }
+
+
+    @Test
+    @DisplayName("getEntry메소드는 게임에 참가했던 자동차리스트를 반환 ")
+    void returns_racingcars_that_participated_game(){
+
+        //given
+        MockedStatic<Randoms> mock = mockStatic(Randoms.class);
+        mock.when(() -> Randoms.pickNumberInRange(anyInt(), anyInt()))
+                .thenReturn(5, Arrays.stream(new Integer[]{1,2,3,7,1}).toArray());
+        Board board = new Board(CarCollection.create("a,b,c"),new Count("5"));
+        board.run();
+
+
+        //when
+        BoardDto boardDto = new BoardDto(board);
+
+
+        //then
+        assertThat(boardDto.getEntrys().size()).isEqualTo(3);
+        assertThat(boardDto.getEntrys().get(0).getName()).isEqualTo("a");
+        assertThat(boardDto.getEntrys().get(1).getName()).isEqualTo("b");
+        assertThat(boardDto.getEntrys().get(2).getName()).isEqualTo("c");
+
+
+    }
 }

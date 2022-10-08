@@ -18,6 +18,7 @@ public class GameOutputScreen {
         for(int i = 0; i < carDtos.size(); i++){
             System.out.print(carDtos.get(i).getName().concat(" : "));
             printRacingCarMoveRecord(carDtos.get(i).getMoveRecords(),index);
+            System.out.println();
         }
     }
 
@@ -32,6 +33,11 @@ public class GameOutputScreen {
         if(isMove)
             System.out.print("-");
 
+    }
+
+    public void printWinners(String[] winners){
+        System.out.print("최종 우승자 : ");
+        System.out.print(String.join(",",winners));
     }
 
 

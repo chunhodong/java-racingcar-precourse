@@ -32,6 +32,9 @@ public class BoardDto {
         }
         return carDtos;
     }
+    public List<CarDto> getEntrys(){
+        return entrys;
+    }
 
     public String[] getWinners(){
         String[] carNames = new String[winners.size()];
